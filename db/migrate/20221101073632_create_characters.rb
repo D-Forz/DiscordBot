@@ -4,7 +4,7 @@ class CreateCharacters < ActiveRecord::Migration[7.0]
       t.string :name, null: false
       t.integer :hp, null: false, default: 10
       t.integer :max_hp, null: false, default: 10
-      t.integer :attack, null: false, default: 2
+      t.integer :attack, null: false, default: 3
       t.integer :defense, null: false, default: 1
       t.integer :xp, null: false, default: 0
       t.integer :gold, null: false, default: 0

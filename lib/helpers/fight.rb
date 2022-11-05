@@ -2,11 +2,7 @@ module Fight
   def self.attack(attacker, defender)
     defense = [defender.defense, 1].max
     chance_to_hit = Random.rand(0..(attacker.attack / defense))
-    if chance_to_hit.positive?
-      damage = attacker.attack
-    else
-      damage = 0
-    end
+    damage = chance_to_hit.positive? ? attacker.attack : 0
 
     defender.hp -= damage
     return damage, defender.hp
