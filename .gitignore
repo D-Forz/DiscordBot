@@ -1,5 +1,4 @@
 .env
 db/schema.rb
-db/seed.rb
 .rubocop.yml
 Gemfile.lock
