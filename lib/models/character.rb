@@ -15,7 +15,7 @@ class Character < ApplicationRecord
     self.battling = 1
     update(mode:, battling:)
 
-    return monster
+    monster
   end
 
   def flee(monster)
@@ -23,10 +23,10 @@ class Character < ApplicationRecord
     self.battling = 0
     update(mode:, battling:)
 
-    return "You fled from #{monster.name}."
+    "You fled from #{monster.name}."
   end
 
-  def defeat(monster)
+  def defeat(monster, character)
     self.xp += monster.xp
     self.gold += monster.gold
 
@@ -34,8 +34,10 @@ class Character < ApplicationRecord
     self.battling = 0
 
     update(xp:, gold:, mode:, battling:)
-    level_up if self.xp >= 100
-    return "You defeated #{monster.name} and gained #{monster.xp} XP and :coin: #{monster.gold} gold."
+    message = self.xp >= 100 ? level_up : "lost #{character.max_hp - character.hp} HP, and now have #{character.hp} HP."
+    "#{character.name} found and defeat a **#{monster.name}**!\n" \
+      "got #{monster.xp} XP and #{monster.gold} gold.\n" \
+      "#{message}"
   end
 
   def level_up
@@ -48,6 +50,6 @@ class Character < ApplicationRecord
     self.xp = 0
 
     update(level:, max_hp:, hp:, mp:, attack:, defense:, xp:)
-    return "You leveled up to level #{level}!"
+    "leveled up to level #{level}!"
   end
 end
