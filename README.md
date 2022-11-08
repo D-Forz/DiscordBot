@@ -1,7 +1,7 @@
 
 # DiscordBot
 
-A Discord Bot made with ruby and discordrb gem.
+A Discord Bot made with ruby and discordrb gem. There are two versions, one with the normal commands and prefix "!" and another with the last aproach of discord with slash commands(branch: `slash-commands`)
 
 
 ## Dependencies
